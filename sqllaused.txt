@@ -1,0 +1,11 @@
+MS SQl Server Management stuudio
+
+Server Name: localdb/(...) ja Windows Authentication
+--------------------------
+CREATE DATABASE PimahhovTITpv22;
+
+INSERT INTO oppeaine(
+nimetus, kestvus, kirjeldus, algus_kuupaev)
+VALUES (
+'Andmebaasid', 200, '2024-04-9', 'Rakendusserverite moodul');
+select * from oppeaine;
