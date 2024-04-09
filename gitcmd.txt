@@ -1,0 +1,11 @@
+cd desctop
+git init andmebaasidpimahhov
+git config --global user.name "Igor Pimahhov"
+git config --global user.email "pimahhov.igor@gmail.com"
+git config --global --list
+git status
+---
+kui uus fail ja salvestatud, siis on vaja add ja commit
+
+git add .
+git commit -a -m "põhi ab sõnad on lisatud"
