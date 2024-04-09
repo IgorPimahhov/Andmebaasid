@@ -1,0 +1,12 @@
+andmed - данные
+haldus - администрирование
+andmebaaside haldussüsteem - система управления базами данных(БД) (СУБД)
+СУБД - Mysql, XAMPP/phpMyAdmin, MS SQL Server, DBeaver
+------------------------------------------------------------------------------------------------
+tabel - таюлица
+rida = kirje - запись
+veerg = väli - поле 
+primaarne võti - primary key - первичный ключь
+väline võti - foreign key - вторичный ключь 
+päring - Query - запрос
+käivita - Execute! - запустить
