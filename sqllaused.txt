@@ -82,3 +82,198 @@ nimetus, kestvus, kirjeldus, algus_kuupaev, opetajaID)
 VALUES (
 'Linux', 500, '1', '2024-04-9', '1');
 SELECT * FROM oppeaine;
+
+
+
+
+
+
+
+
+
+
+CREATE DATABASE PimahhovTITpv22;
+
+--tabeli loomine
+--primary key - annab unikaalne väärtus
+USE PimahhovTITpv22;
+create table oppeaine(
+oppeaineID int Primary key identity(1,1),
+nimetus varchar(50) unique,
+kestvus int NOT NULL,
+kirjeldus text,
+algus_kuupaev date);
+--Kuva/ Näita tabeli
+select * from oppeaine;
+
+--andmete lisamine tabeli sisse
+INSERT INTO oppeaine(
+nimetus, kestvus, kirjeldus, algus_kuupaev)
+VALUES (
+'Andmebaasid5', 200, 'hard', '2024-04-9');
+SELECT * FROM oppeaine;
+
+INSERT INTO oppeaine(
+nimetus, kestvus, kirjeldus, algus_kuupaev)
+VALUES (
+'Arvutivorkud', 200, 'hard', '2024-04-9');
+SELECT * FROM oppeaine;
+
+INSERT INTO oppeaine(
+nimetus, kestvus, kirjeldus, algus_kuupaev)
+VALUES (
+'Ajalugu', 200, 'hard', '2024-04-9');
+SELECT * FROM oppeaine;
+
+INSERT INTO oppeaine(
+nimetus, kestvus, kirjeldus, algus_kuupaev)
+VALUES (
+'Bioloogia', 200, 'hard', '2024-04-9');
+SELECT * FROM oppeaine;
+
+INSERT INTO oppeaine(
+nimetus, kestvus, kirjeldus, algus_kuupaev)
+VALUES (
+'matemaatika', 200, 'hard', '2024-04-9');
+SELECT * FROM oppeaine;
+--tabeli kustutamine
+drop table opilane
+drop table hindamine 
+
+--Tabel opetaja
+
+USE PimahhovTITpv22;
+create table opetaja(
+opetajaID int Primary key identity(1,1),
+eesnimi varchar(50),
+perekonnanimi varchar(50) NOT NULL,
+sunniaeg date,
+kontakt varchar(50));
+select * from opetaja;
+insert into opetaja(eesnimi, perekonnanimi, kontakt)
+values('Mihail', 'Agapov', '@telegram');
+select * from opetaja;
+
+insert into opetaja(eesnimi, perekonnanimi, kontakt)
+values('Irina', 'Merkulova', '@telegram');
+select * from opetaja;
+
+--andmete uuendamine
+UPDATE opetaja SET sunniaeg='1999-10-10'
+where opetajaID=1;
+--FK-->PK
+--tabeli muutmine veergu lisamine
+Alter table oppeaine ADD opetajaID int;
+Select * from oppeaine;
+SELECT * from opetaja;
+UPDATE oppeaine SET	kirjeldus='hard';
+
+--Foreign key lisamine tabeli sisse
+Alter Table oppeaine
+ADD FOREIGN KEY (opetajaID) REFERENCES opetaja(opetajaID)
+
+INSERT INTO oppeaine(
+nimetus, kestvus, kirjeldus, algus_kuupaev, opetajaID)
+VALUES (
+'Linux', 500, '1', '2024-04-9', '1');
+SELECT * FROM oppeaine;
+
+CREATE TABLE opilane(
+opilaneID int Primary key identity(1,1),
+eesnimi varchar(50) NOT NULL,
+perenimi varchar(50) NOT NULL,
+isikukood int NOT NULL UNIQUE,
+aadress Text,);
+
+insert into opilane(nimi, perenimi)
+values('Ilja', 'Kohnovich');
+select * from opilane;
+
+insert into opilane(nimi, perenimi)
+values('Igor', 'Pimahhov');
+select * from opilane;
+
+insert into opilane(nimi, perenimi)
+values('Andrey', 'Galkin');
+select * from opilane;
+
+insert into opilane(nimi, perenimi)
+values('Georg', 'Rakov');
+select * from opilane;
+
+insert into opilane(nimi, perenimi)
+values('Einar', 'Sepessev');
+select * from opilane;
+
+
+create table hindamine(
+hindamineID int Primary key identity(1,1),
+hind int,
+kuupaev date,
+opilaneID int,
+oppeaineID int);
+--Kuva/ Näita tabeli
+select * from hindamine;
+
+
+insert into hindamine(hind, kuupaev, opilaneID, oppeaineID)
+values('5', '2023-03-04', '1', '3');
+select * from hindamine;
+insert into hindamine(hind, kuupaev, opilaneID, oppeaineID)
+values('4', '2023-03-04', '3', '2');
+select * from hindamine;
+insert into hindamine(hind, kuupaev, opilaneID, oppeaineID)
+values('2', '2023-03-04', '5', '1');
+select * from hindamine;
+insert into hindamine(hind, kuupaev, opilaneID, oppeaineID)
+values('2', '2023-03-04', '4', '3');
+select * from hindamine;
+insert into hindamine(hind, kuupaev, opilaneID, oppeaineID)
+values('2', '2023-03-04', '2', '5');
+select * from hindamine;
+
+Alter Table opilane
+ADD FOREIGN KEY (hindamineID) REFERENCES hindamine(hindamineID)
+
+Alter table hindamine ADD opilaneID int;
+Select * from opilane;
+SELECT * from hindamine;
+
+INSERT INTO hindamine(hindamiseID, kuupaev, opilaneID)
+VALUES ('4', 'vaga hasti' '1');
+SELECT * FROM hindamine;
+
+UPDATE hindamine SET hindamineID='1'
+where opilaneID=1;
+
+UPDATE opetaja SET opetajaID=2 where opetajaID = 3 ;
+
+-- FK add
+ALTER TABLE oppeaine ADD FOREIGN KEY (opetajaID) REFERENCES opetaja(opetajaID);
+
+CREATE TABLE opilane(
+opilaneID int Primary key identity(1,1),
+eesnimi varchar(50) NOT NULL,
+perenimi varchar(50) NOT NULL,
+isikukood int NOT NULL UNIQUE,
+aadress Text,);
+
+CREATE TABLE hindamine(
+hindamiseID int Primary key identity(1,1),
+kuupaev varchar(50) NOT NULL,
+opelaneID int ,
+oppeaineID int,
+hinne int);
+
+SELECT * FROM opetaja;
+SELECT * FROM oppeaine;
+
+SELECT * FROM hindamine;
+SELECT * FROM opilane;
+
+
+
+
+ALTER TABLE oppeaine ADD FOREIGN KEY (opetajaID) REFERENCES opetaja(opetajaID);
+INSERT INTO hindamine(kuupaev, opilaneID, oppeaineID, hind) VALUES ('2222-07-22',100,100,5);
+
