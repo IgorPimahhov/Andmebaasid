@@ -112,4 +112,17 @@ end;
 
 exec tootajalisamineeee 'andrei', 'warov'
 
+create procedure kirjeldusuueendamineee
+@rida varchar (25),
+@uuskirjeldus varchar(25)
+as
+
+begin
+	update kaup(kaup, kirjeldus)
+	values (@rida, @uuskirjeldus);
+	select * from kaup;
+end;
+
+exec kirjeldusuueendamineee 'rimi', 'ert'
+
 
