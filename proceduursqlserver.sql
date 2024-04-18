@@ -83,3 +83,33 @@ EXEC muudatus @tegevus='drop',
 @tabelinimi='tootaja', 
 @veerunimi='test';
 select* from tootaja;
+
+---------------------------------------------------
+
+create procedure nimiuuendamine
+@uusnimi varchar (25),
+@id int
+as
+begin
+	select * from tootaja;
+	update tootaja set eesnimi=@uusnimi
+	where id=@id;
+	select * from tootaja;
+end;
+
+exec nimiuuendamine 'andrei', 4;
+
+create procedure tootajalisamineeee
+@nimi varchar (25),
+@perenimi varchar(25)
+as
+
+begin
+	insert into tootaja(eesnimi, perenimi)
+	values (@nimi, @perenimi);
+	select * from tootaja;
+end;
+
+exec tootajalisamineeee 'andrei', 'warov'
+
+
